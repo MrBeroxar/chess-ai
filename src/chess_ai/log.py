@@ -1,7 +1,11 @@
 import os
 from datetime import datetime
 
+### Added so that logging works on macOS ###
+main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+logs_dir = os.path.join(main_dir, "logs")
 
+os.makedirs(logs_dir, exist_ok=True)
 main_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 debug_info = {"nodes_searched": 0, "move_details": {}}

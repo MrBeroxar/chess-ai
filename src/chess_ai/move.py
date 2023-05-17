@@ -26,12 +26,7 @@ def get_ordered_moves(board: chess.GameState) -> List[chess.Move]:
     def orderer(move):
         return evaluate_board(board, move)
 
-    in_order = []
-    for move in board.getValidMoves():
-        if move.isLegal():
-            in_order.append(move)
-
-    in_order = sorted(in_order, key=orderer, reverse=(board.white_to_move))
+    in_order = sorted(board.getValidMoves(), key=orderer, reverse=(board.white_to_move))
     return list(in_order)
 
 def minimax_root(depth: int, board: chess.GameState) -> chess.Move:
