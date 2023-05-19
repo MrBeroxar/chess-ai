@@ -1,0 +1,11 @@
+,function,depth,iterations,nodes,average_time,total_time
+0,<function benchmark_best_move.<locals>.bench at 0x1142ba0c0>,1,500,20,8.98,4.4905
+1,<function benchmark_best_move.<locals>.bench at 0x1142ba0c0>,1,500,0,4.42,2.2103
+2,<function benchmark_best_move.<locals>.bench at 0x1142ba160>,2,100,420,184.24,18.4241
+3,<function benchmark_best_move.<locals>.bench at 0x1142ba160>,2,100,0,4.81,0.481
+4,<function benchmark_best_move.<locals>.bench at 0x1142ba2a0>,3,20,1303,2354.95,47.0989
+5,<function benchmark_best_move.<locals>.bench at 0x1142ba2a0>,3,20,0,4.84,0.0967
+6,<function benchmark_best_move.<locals>.bench at 0x1142ba480>,4,5,10672,8575.93,42.8797
+7,<function benchmark_best_move.<locals>.bench at 0x1142ba480>,4,5,0,4.51,0.0226
+8,<function benchmark_best_move.<locals>.bench at 0x1142ba340>,5,1,34688,62130.37,62.1304
+9,<function benchmark_best_move.<locals>.bench at 0x1142ba340>,5,1,0,4.65,0.0046
