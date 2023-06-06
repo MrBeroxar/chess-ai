@@ -14,8 +14,22 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 benchmark_file = os.path.join(script_dir, "boards_and_moves.txt")
 current_best_move = None
 current_debug_info = {}
-df_benchmarkings = pd.read_csv("benchmarks/depth_benchmarking/bestmove_benchmarkings.csv") if pd.io.common.file_exists("benchmarks/depth_benchmarking/bestmove_benchmarkings.csv") else pd.DataFrame(
-    columns=["function", "depth", "iterations", "nodes", "average_time", "total_time","date"]
+df_benchmarkings = (
+    pd.read_csv("benchmarks/depth_benchmarking/bestmove_benchmarkings.csv")
+    if pd.io.common.file_exists(
+        "benchmarks/depth_benchmarking/bestmove_benchmarkings.csv"
+    )
+    else pd.DataFrame(
+        columns=[
+            "function",
+            "depth",
+            "iterations",
+            "nodes",
+            "average_time",
+            "total_time",
+            "date",
+        ]
+    )
 )
 current_date = date.today().strftime("%Y-%m-%d")
 
@@ -43,7 +57,7 @@ def benchmark_to_df(function, depth, iteration, nodes, avg, tot):
         "nodes": nodes,
         "average_time": avg,
         "total_time": tot,
-        "date": current_date
+        "date": current_date,
     }
 
 
@@ -93,17 +107,16 @@ def benchmark_best_move(depth, boards, n, msg):
 
 
 def plot():
-    
     grouped = df_benchmarkings[df_benchmarkings["nodes"] != 0].groupby("nodes")
     plt.figure(figsize=(8, 6))
     for name, group in grouped:
-        timestamp = group["date"] 
+        timestamp = group["date"]
         average_time = group["average_time"]
         label = f"Nodes: {name}"
-        plt.plot(timestamp, average_time, label=label)  
-    plt.xlabel("date")  
+        plt.plot(timestamp, average_time, label=label)
+    plt.xlabel("date")
     plt.ylabel("Average Time in ms")
-    plt.title("Average Time (Grouped by Nodes/Depth)")  
+    plt.title("Average Time (Grouped by Nodes/Depth)")
     plt.legend()
     plt.grid(True)
     plt.savefig(
@@ -131,9 +144,8 @@ def benchmark():
         )
         print(info)
 
-  
     df_benchmarkings[df_benchmarkings["nodes"] != 0].to_csv(
-        f"benchmarks/depth_benchmarking/bestmove_benchmarkings.csv"
+        "benchmarks/depth_benchmarking/bestmove_benchmarkings.csv"
     )
     plot()
 

@@ -29,6 +29,7 @@ def get_ordered_moves(board: chess.GameState) -> List[chess.Move]:
     in_order = sorted(board.getValidMoves(), key=orderer, reverse=(board.white_to_move))
     return list(in_order)
 
+
 def minimax_root(depth: int, board: chess.GameState) -> chess.Move:
     maximize = board.white_to_move
     best_move = -float("inf") if maximize else float("inf")
