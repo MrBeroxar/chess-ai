@@ -1,0 +1,6 @@
+,function,depth,iterations,nodes,average_time,total_time,date
+0,<function benchmark_best_move.<locals>.bench at 0x112ff20c0>,1,500,20,9.07,4.5343,2023-06-06
+2,<function benchmark_best_move.<locals>.bench at 0x112ff2160>,2,100,420,176.55,17.6553,2023-06-06
+4,<function benchmark_best_move.<locals>.bench at 0x112ff2340>,3,20,1303,3468.31,69.3663,2023-06-06
+6,<function benchmark_best_move.<locals>.bench at 0x112ff2480>,4,5,10672,10320.05,51.6002,2023-06-06
+8,<function benchmark_best_move.<locals>.bench at 0x112ff25c0>,5,1,34688,58762.02,58.762,2023-06-06
