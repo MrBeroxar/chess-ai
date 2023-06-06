@@ -120,7 +120,7 @@ def plot():
     plt.legend()
     plt.grid(True)
     plt.savefig(
-        f"benchmarks/depth_benchmarking/plot.png",
+        "benchmarks/depth_benchmarking/plot_depths.png",
         dpi=300,
         bbox_inches="tight",
     )

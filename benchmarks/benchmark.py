@@ -3,6 +3,7 @@ from io import StringIO
 import timeit
 import contextlib
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from chess_ai import chess_engine as chess
 from chess_ai import move
@@ -53,7 +54,7 @@ def get_boards(file):
 
 
 def get_boards_list():
-    files = ["early_game_boards.txt", "mid_game_boards.txt", "late_game_boards.txt"]
+    files = ["boards/early_game_boards.txt", "boards/mid_game_boards.txt", "boards/late_game_boards.txt"]
     boards_list = []
     for file in files:
         boards_list.append(get_boards(file))
@@ -209,6 +210,17 @@ def benchmark_best_move(boards):
 
     benchmark_template(5, n, bench, boards, True)
 
+def plot():
+    grouped_df = benchmark_dataframe.groupby('Category')['Average'].mean()
+    grouped_df.plot(kind='bar')
+    plt.xlabel('Category')
+    plt.ylabel('Average Time')
+    plt.title('Average Time by Category')
+    plt.savefig(
+        "benchmarks/category_benchmarking/plot_category.png",
+        dpi=300,
+        bbox_inches="tight",
+    )
 
 def benchmark():
     print("Initializing benchmarks...")
@@ -228,8 +240,9 @@ def benchmark():
         benchmark_evaluate(boards_list[i])
         benchmark_best_move(boards_list[i])
 
-    benchmark_dataframe.to_csv("benchmarks/benchmarks.csv")
-    benchmark_dataframe.to_latex("benchmarks/benchmarks.tex", index=False)
+    plot()
+    benchmark_dataframe.to_csv("benchmarks/category_benchmarking/benchmarks_category.csv")
+    #benchmark_dataframe.to_latex("benchmarks/category_benchmarking/benchmarks.tex", index=False)
 
 
 if __name__ == "__main__":
